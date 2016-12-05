@@ -7,7 +7,7 @@ public class EnemyAi : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent nav;
     private Transform player;
     public GameObject enemy;
-
+	Animator anim;
 
     public enum State
     {
@@ -56,7 +56,7 @@ public class EnemyAi : MonoBehaviour
 
         alive = true;
 
-        //heightMultiplier = 0.0f;
+        heightMultiplier = 1.7f;
 
         StartCoroutine("FSM");
     }
@@ -204,6 +204,7 @@ public class EnemyAi : MonoBehaviour
 
 
         }
+
     }
 
 }
