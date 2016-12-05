@@ -21,3 +21,36 @@ E:\Unity Projects\GroupProject\Group Project\Temp\bin\Debug\UnityEngine.Analytic
 E:\Unity Projects\GroupProject\Group Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 E:\Unity Projects\GroupProject\Group Project\obj\Debug\Assembly-CSharp.dll
 E:\Unity Projects\GroupProject\Group Project\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEditor.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Analytics.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.HoloLens.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.VR.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEditor.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Analytics.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.HoloLens.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.VR.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp.pdb
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Advertisements.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Purchasing.dll
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Advertisements.xml
+C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Purchasing.xml
