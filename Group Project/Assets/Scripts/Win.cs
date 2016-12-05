@@ -6,7 +6,7 @@ public class Win : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject.Find("Capsule").SendMessage("finish");
+        GameObject.Find("Jack").SendMessage("finish");
     }
 }
 
