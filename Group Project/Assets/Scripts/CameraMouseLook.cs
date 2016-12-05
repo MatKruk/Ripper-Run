@@ -15,7 +15,7 @@ public class CameraMouseLook : MonoBehaviour {
 	void Start ()
     {
         //Set to the parent of the code is attached to
-        character = this.transform.parent.gameObject;
+        character = this.transform.parent.parent.gameObject;
 	
 	}
 	
