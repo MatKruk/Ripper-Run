@@ -5,18 +5,27 @@ public class DetectHit : MonoBehaviour {
 
 	Animator anim;
 
+	float seconds = 30.0f;
+
     void OnTriggerEnter(Collider other)
     {
 		if (Input.GetButton("Fire1"))
 		{
 			//Destroy(gameObject);
 			anim.SetBool ("isDead", true);
+			if (true) 
+			{
+				Destroy (gameObject, seconds);
+			}
 		}
 		if (Input.GetButton("Fire2"))
 		{
-			//Destroy(gameObject);
 			anim.SetBool ("isDeadToo", true);
-			print("THIS WORK");
+			//print("THIS WORK");
+			if (true) 
+			{
+				Destroy (gameObject, seconds);
+			}
 
 		}
     }
@@ -31,6 +40,6 @@ public class DetectHit : MonoBehaviour {
 	void Update ()
     {
 		
-
 	}
+
 }
