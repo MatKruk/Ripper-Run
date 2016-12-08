@@ -78,14 +78,14 @@ public class PlayerCamera : MonoBehaviour {
 			capsulecollider.height = 1.0f;
 			anim.SetBool ("isCrouching", true);
 			anim.SetBool("isIdle", false);
-			speed = crouchSpeed;
+
 
 			if (translation != 0 || translate != 0) 
 			{
 				anim.SetBool ("isCrouching", false);
 				anim.SetBool("isWalking", false);
 				anim.SetBool ("isCrouchingForward", true);
-			
+				speed = crouchSpeed;
 			} 
 			else 
 			{
@@ -97,7 +97,7 @@ public class PlayerCamera : MonoBehaviour {
 		{
 			capsulecollider.height = 2.0f;
 			anim.SetBool ("isCrouching", false);
-			speed = walkSpeed;
+			//speed = walkSpeed;
 		}
 
 		//Running
@@ -114,7 +114,7 @@ public class PlayerCamera : MonoBehaviour {
 		else 
 		{
 			anim.SetBool("isRunning", false);
-			speed = walkSpeed;
+			//speed = walkSpeed;
 		}
 
         //Allows the mouse to be shown in order to escape gameplay.
