@@ -74,7 +74,8 @@ public class PlayerCamera : MonoBehaviour {
 		//Crouching and Crouching Walk
 		if (Input.GetButton ("Shift")) 
 		{
-			capsulecollider.radius = 0.9f;
+			capsulecollider.center = new Vector3 (0.0f, 0.75f, 0.0f);
+			capsulecollider.radius = 0.5f;
 			capsulecollider.height = 1.0f;
 			anim.SetBool ("isCrouching", true);
 			anim.SetBool("isIdle", false);
@@ -95,7 +96,9 @@ public class PlayerCamera : MonoBehaviour {
 		} 
 		else
 		{
+			capsulecollider.center = new Vector3 (0.0f, 1.0f, 0.0f);
 			capsulecollider.height = 2.0f;
+			capsulecollider.radius = 0.75f;
 			anim.SetBool ("isCrouching", false);
 			//speed = walkSpeed;
 		}
