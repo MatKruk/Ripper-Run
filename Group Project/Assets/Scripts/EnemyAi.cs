@@ -7,7 +7,7 @@ public class EnemyAi : MonoBehaviour
 	private UnityEngine.AI.NavMeshAgent nav;
     private Transform playerMove;
 	private GameObject player;
-	private Animator anim;
+	private Animator PoliceAnim;
 	public SphereCollider col; 
     public enum State
     {
@@ -32,7 +32,7 @@ public class EnemyAi : MonoBehaviour
 
     // Variables for Investigate 
 
-    private float investigateTimer;
+    public float investigateTimer;
     public float investigateWait = 10;
 
     // Variables for Sight
@@ -54,6 +54,8 @@ public class EnemyAi : MonoBehaviour
         playerMove = GameObject.FindGameObjectWithTag("Player").transform;
 		player = GameObject.FindGameObjectWithTag("Player");
 
+        PoliceAnim = GetComponent<Animator>();
+
         nav.updatePosition = true;
         nav.updateRotation = true;
 
@@ -65,6 +67,10 @@ public class EnemyAi : MonoBehaviour
         //heightMultiplier = 1.7f;
 
         StartCoroutine("FSM");
+        PoliceAnim.Play("idle");
+        // PoliceAnim.SetBool("Idle", true);
+        // PoliceAnim.SetBool("Walk", false);
+        // PoliceAnim.SetBool("Running", false);
     }
 
 
@@ -96,12 +102,14 @@ public class EnemyAi : MonoBehaviour
 
         nav.destination = wayPoints[wayPointId].position;
 
-
+        PoliceAnim.Play("Walking");
         if (Vector3.Distance(transform.position, wayPoints[wayPointId].transform.position) <= 1)
         {
+            
             if (patrolTimer < patrolWaitTime)
             {
                 patrolTimer += Time.deltaTime;
+               
             }
             else
             {
@@ -112,10 +120,16 @@ public class EnemyAi : MonoBehaviour
                 else
                 {
                     wayPointId++;
+                    
                 }
                 patrolTimer = 0;
+               
+                //PoliceAnim.SetBool("Idle", false);
+                //PoliceAnim.SetBool("Walk", true);
+                //PoliceAnim.SetBool("Running", false);
             }
         }
+       
     }
 
     void Investigate()
@@ -125,6 +139,10 @@ public class EnemyAi : MonoBehaviour
         if (investigateTimer < investigateWait)
         {
             investigateTimer += Time.deltaTime;
+            PoliceAnim.Play("idle");
+            //PoliceAnim.SetBool("Idle", true);
+            //PoliceAnim.SetBool("Walk", false);
+            //PoliceAnim.SetBool("Running", false);
         }
         else
         {
@@ -139,8 +157,8 @@ public class EnemyAi : MonoBehaviour
         nav.speed = chaseSpeed;
 
         nav.SetDestination(lastSight);
-
-        if(Vector3.Distance(transform.position, lastSight) <= 3 && !canSeePlayer)
+        PoliceAnim.Play("Running");
+        if (Vector3.Distance(transform.position, lastSight) <= 3 && !canSeePlayer)
         {
             state = EnemyAi.State.INVESTIGATE;
             print("asda");
@@ -163,7 +181,7 @@ public class EnemyAi : MonoBehaviour
 					if (hit.collider.gameObject == player) {
 						canSeePlayer = true;
 						state = EnemyAi.State.CHASE;
-						//transform.LookAt (playerMove);
+						transform.LookAt (playerMove);
 						lastSight = player.transform.position;
 					}
 				}
