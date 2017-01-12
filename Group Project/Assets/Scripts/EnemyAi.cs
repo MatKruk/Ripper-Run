@@ -8,12 +8,14 @@ public class EnemyAi : MonoBehaviour
     private Transform playerMove;
 	private GameObject player;
 	private Animator PoliceAnim;
-	public SphereCollider col; 
+	public SphereCollider col;
+
     public enum State
     {
         PATROL,
         CHASE,
-        INVESTIGATE
+        INVESTIGATE,
+        ARREST
     }
 
     public State state;
@@ -31,21 +33,18 @@ public class EnemyAi : MonoBehaviour
 
 
     // Variables for Investigate 
-
     public float investigateTimer;
-    public float investigateWait = 10;
+    public float investigateWait;
+    private float maxHeadingChange = 30;
+    private float heading;
+    Vector3 targetRotation;
+
+
 
     // Variables for Sight
-	public float fieldOfViewAngle = 110f;
+    public float fieldOfViewAngle = 110f;
 	public bool canSeePlayer;
 	public Vector3 lastSight;
-
-
-
-	//public float heightMultiplier;
-    //public float sightDist = 10;
-    
-    
 
     void Start()
     {
@@ -64,13 +63,9 @@ public class EnemyAi : MonoBehaviour
 
         alive = true;
 
-        //heightMultiplier = 1.7f;
-
         StartCoroutine("FSM");
         PoliceAnim.Play("idle");
-        // PoliceAnim.SetBool("Idle", true);
-        // PoliceAnim.SetBool("Walk", false);
-        // PoliceAnim.SetBool("Running", false);
+
     }
 
 
@@ -88,6 +83,9 @@ public class EnemyAi : MonoBehaviour
                     break;
                 case State.INVESTIGATE:
                     Investigate();
+                    break;
+                case State.ARREST:
+                    Arrest();
                     break;
             }
             yield return null;
@@ -124,9 +122,7 @@ public class EnemyAi : MonoBehaviour
                 }
                 patrolTimer = 0;
                
-                //PoliceAnim.SetBool("Idle", false);
-                //PoliceAnim.SetBool("Walk", true);
-                //PoliceAnim.SetBool("Running", false);
+             
             }
         }
        
@@ -138,16 +134,20 @@ public class EnemyAi : MonoBehaviour
 
         if (investigateTimer < investigateWait)
         {
+            var floor = transform.eulerAngles.y - maxHeadingChange;
+            var ceil = transform.eulerAngles.y - maxHeadingChange;
+            heading = Random.Range(floor, ceil);
+            targetRotation = new Vector3(0, heading, 0);
+
+            nav.SetDestination(targetRotation);
+
             investigateTimer += Time.deltaTime;
             PoliceAnim.Play("idle");
-            //PoliceAnim.SetBool("Idle", true);
-            //PoliceAnim.SetBool("Walk", false);
-            //PoliceAnim.SetBool("Running", false);
+
         }
         else
         {
             investigateTimer = 0;
-			// Will have a wander for a time period but for now it goes to patrol
             state = EnemyAi.State.PATROL;
         }
     }
@@ -163,10 +163,23 @@ public class EnemyAi : MonoBehaviour
             state = EnemyAi.State.INVESTIGATE;
             print("asda");
         }
+       // else
+           // state = EnemyAi.State.ARREST;
 
     }
 
-	void OnTriggerStay(Collider other)
+    void Arrest()
+    {
+        if (this.transform.position == player.transform.position)
+        {
+            print("Needs to arrest here");
+        }
+
+
+    }
+
+
+    void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject == player) {
 			canSeePlayer = false;
