@@ -29,7 +29,7 @@ public class EnemyAi : MonoBehaviour
     public float patrolTimer;
 
     // Variables for Chase
-    public float chaseSpeed = 2.0f;
+    public float chaseSpeed = 4.0f;
 
 
     // Variables for Investigate 
@@ -38,7 +38,7 @@ public class EnemyAi : MonoBehaviour
     private float maxHeadingChange = 30;
     private float heading;
     Vector3 targetRotation;
-
+    public Vector3 wandPoint;
 
 
     // Variables for Sight
@@ -100,14 +100,16 @@ public class EnemyAi : MonoBehaviour
 
         nav.destination = wayPoints[wayPointId].position;
 
-        PoliceAnim.Play("Walking");
+       
         if (Vector3.Distance(transform.position, wayPoints[wayPointId].transform.position) <= 1)
         {
             
             if (patrolTimer < patrolWaitTime)
             {
                 patrolTimer += Time.deltaTime;
-               
+                PoliceAnim.SetBool("Idle", true);
+                PoliceAnim.SetBool("Walk", false);
+                PoliceAnim.SetBool("Running", false);
             }
             else
             {
@@ -120,6 +122,9 @@ public class EnemyAi : MonoBehaviour
                     wayPointId++;
                     
                 }
+                PoliceAnim.SetBool("Idle", false);
+                PoliceAnim.SetBool("Walk", true);
+                PoliceAnim.SetBool("Running", false);
                 patrolTimer = 0;
                
              
@@ -130,20 +135,35 @@ public class EnemyAi : MonoBehaviour
 
     void Investigate()
     {
-        //nav.SetDestination(lastSight);
+       
 
         if (investigateTimer < investigateWait)
         {
+            //transform.LookAt(lastSight);
+            //nav.SetDestination(lastSight);
+
+            Vector3 wandPoint = new Vector3 (Random.Range(0.0f, 10.0f), 0, Random.Range(0.0f, 10.0f));
+
+            //wandPoint += transform.position;
+            Vector3 lookDirection = this.transform.position - transform.position;
+			float angle = Vector3.Angle (lookDirection, transform.forward);
+
+            nav.SetDestination(wandPoint);
+
+            investigateTimer += Time.deltaTime;
+           
+
+            /*
             var floor = transform.eulerAngles.y - maxHeadingChange;
             var ceil = transform.eulerAngles.y - maxHeadingChange;
             heading = Random.Range(floor, ceil);
             targetRotation = new Vector3(0, heading, 0);
 
             nav.SetDestination(targetRotation);
-
-            investigateTimer += Time.deltaTime;
-            PoliceAnim.Play("idle");
-
+            */
+            PoliceAnim.SetBool("Idle", false);
+            PoliceAnim.SetBool("Walk", true);
+            PoliceAnim.SetBool("Running", false);
         }
         else
         {
@@ -157,23 +177,21 @@ public class EnemyAi : MonoBehaviour
         nav.speed = chaseSpeed;
 
         nav.SetDestination(lastSight);
-        PoliceAnim.Play("Running");
+        //nav.destination = player.transform.position;
+        PoliceAnim.SetBool("Idle", false);
+        PoliceAnim.SetBool("Walk", false);
+        PoliceAnim.SetBool("Running", true);
         if (Vector3.Distance(transform.position, lastSight) <= 3 && !canSeePlayer)
         {
             state = EnemyAi.State.INVESTIGATE;
             print("asda");
         }
-       // else
-           // state = EnemyAi.State.ARREST;
-
+    
     }
 
     void Arrest()
     {
-        if (this.transform.position == player.transform.position)
-        {
-            print("Needs to arrest here");
-        }
+        
 
 
     }
