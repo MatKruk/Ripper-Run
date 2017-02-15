@@ -6,12 +6,12 @@ public class PlayerAudio : MonoBehaviour {
 
 	public AudioClip[] stepsounds = new AudioClip[0];
 	public AudioSource source;
-	private Animator anim;
+	//private Animator anim;
 
 	void Start()
 	{
 		source = GetComponent<AudioSource> ();
-		anim = GetComponent<Animator> ();
+		//anim = GetComponent<Animator> ();
 	}
 
 	void WalkingFootStepLeft() 
@@ -26,19 +26,19 @@ public class PlayerAudio : MonoBehaviour {
 			if (tag == "Ground") 
 			{
 				clip = stepsounds [0];
-				volume = UnityEngine.Random.Range (0.04f, 0.08f);
+				volume = UnityEngine.Random.Range (0.2f, 0.4f);
 				print ("Ground: Audio Play");
 			} 
 			else if (tag == "Water") 
 			{
 				clip = stepsounds [1];
-				volume = UnityEngine.Random.Range (0.03f, 0.08f);
+				volume = UnityEngine.Random.Range (0.2f, 0.4f);
 				print ("Water: Audio Play");
 			} 
 			else if (tag == "Grass") 
 			{
 				clip = stepsounds [2];
-				volume = UnityEngine.Random.Range (0.03f, 0.08f);
+				volume = UnityEngine.Random.Range (0.2f, 0.4f);
 				print ("Grass: Audio Play");
 			}
 		}
@@ -62,19 +62,19 @@ public class PlayerAudio : MonoBehaviour {
 			if (tag == "Ground") 
 			{
 				clip = stepsounds [0];
-				volume = UnityEngine.Random.Range (0.03f, 0.08f);
+				volume = UnityEngine.Random.Range (0.2f, 0.4f);
 				print ("Ground: Audio Play");
 			} 
 			else if (tag == "Water") 
 			{
 				clip = stepsounds [1];
-				volume = UnityEngine.Random.Range (0.03f, 0.08f);
+				volume = UnityEngine.Random.Range (0.2f, 0.4f);
 				print ("Water: Audio Play");
 			}
 			else if (tag == "Grass") 
 			{
 				clip = stepsounds [2];
-				volume = UnityEngine.Random.Range (0.03f, 0.08f);
+				volume = UnityEngine.Random.Range (0.2f, 0.4f);
 				print ("Grass: Audio Play");
 			}
 		}
