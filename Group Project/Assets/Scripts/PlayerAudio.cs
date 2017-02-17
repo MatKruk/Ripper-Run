@@ -85,5 +85,75 @@ public class PlayerAudio : MonoBehaviour {
 
 	}
 
+	void RunningFootStepLeft() 
+	{
+		float volume = 1.0f;
+		//float pitch = 1.0f;
+		AudioClip clip = null;
+		RaycastHit hit = new RaycastHit ();
+		if (Physics.Raycast (transform.position, Vector3.down, out hit, 1.5f)) 
+		{
+			string tag = hit.collider.gameObject.tag;
+			if (tag == "Ground") 
+			{
+				clip = stepsounds [0];
+				volume = UnityEngine.Random.Range (0.3f, 0.6f);
+				print ("Ground: Audio Play");
+			} 
+			else if (tag == "Water") 
+			{
+				clip = stepsounds [1];
+				volume = UnityEngine.Random.Range (0.3f, 0.6f);
+				print ("Water: Audio Play");
+			}
+			else if (tag == "Grass") 
+			{
+				clip = stepsounds [2];
+				volume = UnityEngine.Random.Range (0.3f, 0.6f);
+				print ("Grass: Audio Play");
+			}
+		}
+		if (clip != null) 
+		{
+			source.PlayOneShot (clip, volume);
+		}
+
+	}
+
+	void RunningFootStepRight() 
+	{
+		float volume = 1.0f;
+		//float pitch = 1.0f;
+		AudioClip clip = null;
+		RaycastHit hit = new RaycastHit ();
+		if (Physics.Raycast (transform.position, Vector3.down, out hit, 1.5f)) 
+		{
+			string tag = hit.collider.gameObject.tag;
+			if (tag == "Ground") 
+			{
+				clip = stepsounds [0];
+				volume = UnityEngine.Random.Range (0.3f, 0.6f);
+				print ("Ground: Audio Play");
+			} 
+			else if (tag == "Water") 
+			{
+				clip = stepsounds [1];
+				volume = UnityEngine.Random.Range (0.3f, 0.6f);
+				print ("Water: Audio Play");
+			}
+			else if (tag == "Grass") 
+			{
+				clip = stepsounds [2];
+				volume = UnityEngine.Random.Range (0.3f, 0.6f);
+				print ("Grass: Audio Play");
+			}
+		}
+		if (clip != null) 
+		{
+			source.PlayOneShot (clip, volume);
+		}
+
+	}
+
 
 }
