@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/_Scenes/MapAI.unity
-=======
-- path: Assets/_Scenes/Main Menu.unity
->>>>>>> refs/remotes/origin/master
+- path: Assets/_Scenes/Map_AI.unity
   isLoaded: 1
   isActive: 1
