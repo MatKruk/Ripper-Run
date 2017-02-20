@@ -4,7 +4,7 @@ using System.Collections;
 public class DetectHit : MonoBehaviour {
 
 	Animator anim;
-
+    public bool isDead;
 	float seconds = 30.0f;
 
     void OnTriggerEnter(Collider other)
@@ -13,6 +13,7 @@ public class DetectHit : MonoBehaviour {
 		{
 			//Destroy(gameObject);
 			anim.SetBool ("isDead", true);
+            isDead = true;
 			if (true) 
 			{
 				Destroy (gameObject, seconds);
@@ -21,6 +22,7 @@ public class DetectHit : MonoBehaviour {
 		if (Input.GetButton("Fire2"))
 		{
 			anim.SetBool ("isDeadToo", true);
+            isDead = true;
 			//print("THIS WORK");
 			if (true) 
 			{
