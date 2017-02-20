@@ -6,6 +6,8 @@ public class DetectHit : MonoBehaviour {
 	Animator anim;
     public bool isDead;
 	float seconds = 30.0f;
+	SphereCollider spherecollider;
+	private Rigidbody rb;
 
     void OnTriggerEnter(Collider other)
     {
@@ -17,6 +19,8 @@ public class DetectHit : MonoBehaviour {
 			if (true) 
 			{
 				Destroy (gameObject, seconds);
+				DestroyObject (spherecollider);
+				DestroyObject (rb);
 			}
 		}
 		if (Input.GetButton("Fire2"))
@@ -27,6 +31,8 @@ public class DetectHit : MonoBehaviour {
 			if (true) 
 			{
 				Destroy (gameObject, seconds);
+				DestroyObject (spherecollider);
+				DestroyObject (rb);
 			}
 
 		}
@@ -36,6 +42,8 @@ public class DetectHit : MonoBehaviour {
     void Start ()
     {
 		anim = GetComponent <Animator> ();
+		spherecollider = gameObject.GetComponent<SphereCollider> ();
+		rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
