@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyAi : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class EnemyAi : MonoBehaviour
     // Variables for Chase
     public float chaseSpeed;
 
+    // Variables for Search
+    private float posSeconds;
+    private float posSecondsTimer = 5f;
+    public Vector3 pos5Seconds;
+    public Vector3 playerPasPos;
 
     // Variables for Investigate 
     public float investigateTimer;
@@ -68,10 +74,12 @@ public class EnemyAi : MonoBehaviour
         alive = true;
 
         StartCoroutine("FSM");
+       // StartCoroutine(Search());
        // PoliceAnim.Play("idle");
 
     }
 
+   
 
     IEnumerator FSM()
     {
@@ -111,6 +119,7 @@ public class EnemyAi : MonoBehaviour
             if (patrolTimer < patrolWaitTime)
             {
                 patrolTimer += Time.deltaTime;
+                transform.rotation = Random.rotation;
 
             }
             else
@@ -136,49 +145,50 @@ public class EnemyAi : MonoBehaviour
     void Investigate()
     {
         
-
         if (investigateTimer < investigateWait)
             {
                 investigateTimer += Time.deltaTime;
+                print("doing search");
 
-               // transform.LookAt(playerMove.position);
-                nav.SetDestination(previousSighting);
-            // Vector3 Search = transform.position + transform.forward;
-            // nav.SetDestination(Search);
+               // Search();
+                //nav.SetDestination(pos5Seconds);
+            }
 
-
-        }
+        state = EnemyAi.State.PATROL;
         
     }
 
     void Chase()
     {
         nav.speed = chaseSpeed;
-        playerPos = player.transform.position;
+       // playerPos = player.transform.position;
         nav.SetDestination(previousSighting);
-        //nav.destination = player.transform.position;
-       // Vector3 pos = playerMove.forward;
-       // pos *= 5;
-       // pos += playerMove.position;
 
-       //transform.position = pos;
+       // posSeconds += Time.deltaTime;
+
+       // if (posSeconds >= posSecondsTimer)
+      //  {
+      //      playerPasPos = player.transform.position;
+       //     posSeconds = 0f;
+      //  }
 
         if (Vector3.Distance(transform.position, previousSighting) <= 3 && !canSeePlayer)
         {
             state = EnemyAi.State.INVESTIGATE;
             print("asda");
         }
-        else if(Vector3.Distance(transform.position, playerPos) == 5) 
+        else if (Vector3.Distance(transform.position, player.transform.position) <=2)
         {
-            
+            state = EnemyAi.State.ARREST;
         }
+        
     
     }
 
     void Arrest()
     {
-        
 
+        SceneManager.LoadScene("Arrest_Scene", LoadSceneMode.Single);
 
     }
 
@@ -199,8 +209,8 @@ public class EnemyAi : MonoBehaviour
                 {
                     if (hit.collider.gameObject == player && victimDead.isDead)
                     {
-                        print("Play Sound");
-                        GetComponent<AudioSource>().PlayOneShot(ShoutStop);
+                        //print("Play Sound");
+                        //GetComponent<AudioSource>().PlayOneShot(ShoutStop);
                         
                         canSeePlayer = true;
                         transform.LookAt(player.transform);
@@ -219,6 +229,23 @@ public class EnemyAi : MonoBehaviour
         if (other.gameObject == player)
             canSeePlayer = false;
     }
+
+   // IEnumerator Search()
+   // {
+   //     while (canSeePlayer == true)
+   //     {
+   //         Vector3 sighting = previousSighting - transform.position;
+   //
+   //         Vector3 currentPos = player.transform.position;
+   //
+   //         pos5Seconds = currentPos + (previousSighting - playerPasPos);
+   //
+   //            // nav.destination = pos5Seconds;
+   //         
+   //
+   //         yield return pos5Seconds;
+   //     }
+   // }
 
 
 
