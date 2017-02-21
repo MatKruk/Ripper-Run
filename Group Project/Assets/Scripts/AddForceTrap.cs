@@ -6,19 +6,9 @@ public class AddForceTrap : MonoBehaviour {
 
 	[Range(0.0f, 100.0f)]
 	public float power;
-
-	public GameObject TrapObj1;
-	public GameObject TrapObj2;
-	public GameObject TrapObj3;
-	public GameObject TrapObj4;
-	public GameObject TrapObj5;
-	public GameObject TrapObj6;
-	public Rigidbody rb1;
-	public Rigidbody rb2;
-	public Rigidbody rb3;
-	public Rigidbody rb4;
-	public Rigidbody rb5;
-	public Rigidbody rb6;
+	bool playerInTrigger = false;
+	public GameObject[] trapObj;	// Array of objects activated by the trap.
+	public Rigidbody[] rBody;		// Array to store the RigidBodies of those objects.
 
 	private GameObject player;
 
@@ -27,47 +17,76 @@ public class AddForceTrap : MonoBehaviour {
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 
-		rb1 = TrapObj1.GetComponent<Rigidbody> ();
-		rb2 = TrapObj2.GetComponent<Rigidbody> ();
-		rb3 = TrapObj3.GetComponent<Rigidbody> ();
-		rb4 = TrapObj4.GetComponent<Rigidbody> ();
-		rb5 = TrapObj5.GetComponent<Rigidbody> ();
-		rb6 = TrapObj6.GetComponent<Rigidbody> ();
+		for (int i = 0; i < rBody.Length; i++)
+		{
+			rBody[i] = trapObj [i].GetComponent<Rigidbody> ();
+		}
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject == player) {
 			Debug.Log ("Trigger Entered.");
-
+			playerInTrigger = true;
 		}
-	}
 
-	void OnTriggerStay(Collider other)
+	}
+	void Update()
 	{
-		Debug.Log ("Player in trigger.");
-		if (other.gameObject == player) {
+		trapTrigger();
+	}
+		
+	void trapTrigger() {
+		if (playerInTrigger == true) {
 			if (Input.GetKeyDown (KeyCode.E)) {
 				Debug.Log ("E Key Pressed.");
-
-				rb1.isKinematic = false;
-				rb2.isKinematic = false;
-				rb3.isKinematic = false;
-				rb4.isKinematic = false;
-				rb5.isKinematic = false;
-				rb6.isKinematic = false;
-
-				rb1.AddForce (transform.forward * power, ForceMode.Impulse);
-				rb2.AddForce (transform.forward * power, ForceMode.Impulse);
-				rb3.AddForce (transform.forward * power, ForceMode.Impulse);
-				rb4.AddForce (transform.forward * power, ForceMode.Impulse);
-				rb5.AddForce (transform.forward * power, ForceMode.Impulse);
-				rb6.AddForce (transform.forward * power, ForceMode.Impulse);
-
-
-			}
+	
+				for (int i = 0; i < rBody.Length; i++) {
+					rBody [i].isKinematic = false;
+	
+					rBody [i].AddForce (transform.forward * power, ForceMode.Impulse);
+				}
+			}		
 		}
 	}
+
+
+
+	// OLD ------------------------------------------------------------------------------
+
+	//void Update()
+	//{
+	//	if (playerInTrigger == true) {
+	//		if (Input.GetKeyDown (KeyCode.E)) {
+	//			Debug.Log ("E Key Pressed.");
+	//
+	//			for (int i = 0; i < rBody.Length; i++) {
+	//				rBody [i].isKinematic = false;
+	//
+	//				rBody [i].AddForce (transform.forward * power, ForceMode.Impulse);
+	//			}
+	//		}
+	//	}
+	//}
+
+	//void OnTriggerStay(Collider other)
+	//{
+	//	Debug.Log ("Player in trigger.");
+	//	if (other.gameObject == player) {
+	//		if (Input.GetKeyDown (KeyCode.E)) {
+	//			Debug.Log ("E Key Pressed.");
+	//
+	//			for (int i = 0; i < rBody.Length; i++)
+	//			{
+	//				rBody[i].isKinematic = false;
+	//			
+	//				rBody[i].AddForce (transform.forward * power, ForceMode.Impulse);
+	//			}
+	//		}
+	//	}
+	//}
+
+
 
 	//void OnMouseOver()
 	//{

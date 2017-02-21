@@ -79,3 +79,4 @@ E:\Git\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.VR.xml
 E:\Git\Group-Project\Group Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 E:\Git\Group-Project\Group Project\obj\Debug\Assembly-CSharp.dll
 E:\Git\Group-Project\Group Project\obj\Debug\Assembly-CSharp.pdb
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
