@@ -11,6 +11,8 @@ public class EnemyAi : MonoBehaviour
 	private GameObject player;
 	private Animator PoliceAnim;
     private DetectHit victimDead;
+	private AudioSource audioSource;
+
     public AudioClip ShoutStop;
 	
 
@@ -64,7 +66,7 @@ public class EnemyAi : MonoBehaviour
 		player = GameObject.FindGameObjectWithTag("Player");
         victimDead = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit>();
         PoliceAnim = GetComponent<Animator>();
-        
+		audioSource = GetComponent<AudioSource> ();
 
         nav.updatePosition = true;
         nav.updateRotation = true;
@@ -177,7 +179,7 @@ public class EnemyAi : MonoBehaviour
             state = EnemyAi.State.INVESTIGATE;
             print("asda");
         }
-        else if (Vector3.Distance(transform.position, player.transform.position) <=2)
+        else if (Vector3.Distance(transform.position, player.transform.position) <=3)
         {
             state = EnemyAi.State.ARREST;
         }
@@ -191,6 +193,34 @@ public class EnemyAi : MonoBehaviour
         SceneManager.LoadScene("Arrest_Scene", LoadSceneMode.Single);
 
     }
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject == player)
+		{
+			canSeePlayer = false;
+		
+			Vector3 direction = other.transform.position - transform.position;
+			float angle = Vector3.Angle(direction, transform.forward);
+		
+			if (angle < fieldOfViewAngle * 0.5f)
+			{
+				RaycastHit hit;
+		
+				if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
+				{
+					if (hit.collider.gameObject == player && victimDead.isDead)
+					{
+						print ("Play Sound");
+						audioSource.PlayOneShot (ShoutStop);
+					}
+				}
+		
+				//Hearing
+			}
+		}
+
+	}
 
     void OnTriggerStay(Collider other)
     {
@@ -209,8 +239,6 @@ public class EnemyAi : MonoBehaviour
                 {
                     if (hit.collider.gameObject == player && victimDead.isDead)
                     {
-                        //print("Play Sound");
-                        //GetComponent<AudioSource>().PlayOneShot(ShoutStop);
                         
                         canSeePlayer = true;
                         transform.LookAt(player.transform);

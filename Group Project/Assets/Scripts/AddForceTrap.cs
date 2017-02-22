@@ -38,7 +38,7 @@ public class AddForceTrap : MonoBehaviour {
 		
 	void trapTrigger() {
 		if (playerInTrigger == true) {
-			if (Input.GetKeyDown (KeyCode.E)) {
+			if (Input.GetKeyDown (KeyCode.T)) {
 				Debug.Log ("E Key Pressed.");
 	
 				for (int i = 0; i < rBody.Length; i++) {
