@@ -4,8 +4,10 @@ using System.Collections;
 public class DetectHit : MonoBehaviour {
 
 	Animator anim;
-
+    public bool isDead;
 	float seconds = 30.0f;
+	SphereCollider spherecollider;
+	private Rigidbody rb;
 
     void OnTriggerEnter(Collider other)
     {
@@ -13,18 +15,24 @@ public class DetectHit : MonoBehaviour {
 		{
 			//Destroy(gameObject);
 			anim.SetBool ("isDead", true);
+            isDead = true;
 			if (true) 
 			{
 				Destroy (gameObject, seconds);
+				DestroyObject (spherecollider);
+				DestroyObject (rb);
 			}
 		}
 		if (Input.GetButton("Fire2"))
 		{
 			anim.SetBool ("isDeadToo", true);
+            isDead = true;
 			//print("THIS WORK");
 			if (true) 
 			{
 				Destroy (gameObject, seconds);
+				DestroyObject (spherecollider);
+				DestroyObject (rb);
 			}
 
 		}
@@ -34,6 +42,8 @@ public class DetectHit : MonoBehaviour {
     void Start ()
     {
 		anim = GetComponent <Animator> ();
+		spherecollider = gameObject.GetComponent<SphereCollider> ();
+		rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame

@@ -50,6 +50,7 @@ C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\UnityE
 C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp.dll
 C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp.pdb
+<<<<<<< HEAD
 E:\Git\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp.dll
 E:\Git\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp.pdb
 E:\Git\Group-Project\Group Project\Temp\bin\Debug\UnityEditor.dll
@@ -80,3 +81,34 @@ E:\Git\Group-Project\Group Project\obj\Debug\Assembly-CSharp.csprojResolveAssemb
 E:\Git\Group-Project\Group Project\obj\Debug\Assembly-CSharp.dll
 E:\Git\Group-Project\Group Project\obj\Debug\Assembly-CSharp.pdb
 E:\Git\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+=======
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp.pdb
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEditor.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Analytics.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.HoloLens.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Networking.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.UI.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.VR.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Mono.Cecil.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Unity.SerializationLogic.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Unity.DataContract.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Unity.UNetWeaver.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Unity.CecilTools.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEditor.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.UI.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Networking.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.PlaymodeTestsRunner.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.Analytics.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.HoloLens.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.VR.xml
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Assembly-CSharp.dll
+H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Assembly-CSharp.pdb
+>>>>>>> refs/remotes/origin/master
