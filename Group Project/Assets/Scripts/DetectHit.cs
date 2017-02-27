@@ -52,11 +52,12 @@ public class DetectHit : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.N)) 
 		{
 			anim.SetBool ("dance", true);
+			anim.SetBool ("isTalking", false);
 		} 
 		else if (Input.GetKeyDown (KeyCode.B)) 
 		{
 			anim.SetBool ("dance", false);
-			anim.SetBool("idle", true);
+			//anim.SetBool("idle", true);
 		}
 
 
