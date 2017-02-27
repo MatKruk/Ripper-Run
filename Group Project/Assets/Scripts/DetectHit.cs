@@ -49,7 +49,17 @@ public class DetectHit : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		
+		if (Input.GetKeyDown (KeyCode.N)) 
+		{
+			anim.SetBool ("dance", true);
+		} 
+		else if (Input.GetKeyDown (KeyCode.B)) 
+		{
+			anim.SetBool ("dance", false);
+			anim.SetBool("idle", true);
+		}
+
+
 	}
 
 }
