@@ -21,7 +21,7 @@ public class Win : MonoBehaviour
 		{
 			GameObject.Find("Jack").SendMessage("finish");
 			SceneManager.LoadScene ("Win_Scene", LoadSceneMode.Single);
-			print ("This works");
+			//print ("This works");
 		}
 	}
 }

@@ -8,6 +8,7 @@ public class DetectHit : MonoBehaviour {
 	float seconds = 30.0f;
 	SphereCollider spherecollider;
 	private Rigidbody rb;
+	//AudioSource audio;
 
     void OnTriggerStay(Collider other)
     {
@@ -44,6 +45,7 @@ public class DetectHit : MonoBehaviour {
 		anim = GetComponent <Animator> ();
 		spherecollider = gameObject.GetComponent<SphereCollider> ();
 		rb = GetComponent<Rigidbody>();
+		//audio = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -60,7 +62,5 @@ public class DetectHit : MonoBehaviour {
 			//anim.SetBool("idle", true);
 		}
 
-
 	}
-
 }
