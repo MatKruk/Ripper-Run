@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SwitchCamera : MonoBehaviour {
 
-	[SerializeField] Camera firstPerson;
-	[SerializeField] Camera thirdPerson;
-	[SerializeField] Camera backCamera;
+	[SerializeField] Camera firstPerson = null;
+	[SerializeField] Camera thirdPerson = null;
+	[SerializeField] Camera backCamera = null;
 	private bool switchCam = false;
 	private bool backCam = false;
 
