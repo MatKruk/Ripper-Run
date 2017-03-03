@@ -7,6 +7,8 @@ public class PlayerCamera : MonoBehaviour {
     public float walkSpeed = 3.0f;
 	public float runSpeed = 5.0f;
 	public float crouchSpeed = 2.0f;
+    public int health = 2;
+
     Animator anim;
 	CapsuleCollider capsulecollider;
 
@@ -124,6 +126,11 @@ public class PlayerCamera : MonoBehaviour {
         if (Input.GetKeyDown("escape"))
             Cursor.lockState = CursorLockMode.None;
 
+    }
+
+    public void TakeDamage (int amount)
+    {
+        health -= amount;
     }
 
   
