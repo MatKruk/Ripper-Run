@@ -12,9 +12,9 @@ public class EnemyAi : MonoBehaviour
     private Animator PoliceAnim;
     private PlayerCamera playerHealth;
     private VictimDeadCheck victimDead;
-    private AudioSource audioSource;
-
-    public AudioClip ShoutStop;
+    private AudioSource Source;
+    public AudioClip stopShout;
+  
 
 
     public enum State
@@ -74,7 +74,8 @@ public class EnemyAi : MonoBehaviour
         victimDead = GameObject.FindGameObjectWithTag("Police").GetComponent<VictimDeadCheck>(); 
 
         PoliceAnim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+        Source = GetComponent<AudioSource>();
+        
 
         nav.updatePosition = true;
         nav.updateRotation = true;
@@ -249,11 +250,13 @@ public class EnemyAi : MonoBehaviour
                 if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
                 {
                     if (hit.collider.gameObject == player && victimDead.deadVic)
-                    {                        
+                    {
+                        AudioClip clip = null;
+                        clip = stopShout;
                         canSeePlayer = true;
                         transform.LookAt(player.transform);
                         previousSighting = player.transform.position;
-                        
+                        Source.PlayOneShot(clip);
                         state = EnemyAi.State.CHASE;
                     }
                 }

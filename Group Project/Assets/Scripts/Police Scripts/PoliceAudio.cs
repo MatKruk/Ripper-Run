@@ -29,5 +29,11 @@ public class PoliceAudio : MonoBehaviour {
             volume = UnityEngine.Random.Range(0.3f, 0.6f);
             print("Grass: Audio Play Shout Stop");
         }
+
+        if (clip != null)
+        {
+            source.PlayOneShot(clip, volume);
+            //source.pitch = UnityEngine.Random.Range(0.0f, 0.6f);
+        }
     }
 }
