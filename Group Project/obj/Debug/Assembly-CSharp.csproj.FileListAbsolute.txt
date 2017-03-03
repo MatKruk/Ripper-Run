@@ -112,3 +112,4 @@ H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Ass
 H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Assembly-CSharp.dll
 H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Assembly-CSharp.pdb
 >>>>>>> refs/remotes/origin/master
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\LitJson.dll

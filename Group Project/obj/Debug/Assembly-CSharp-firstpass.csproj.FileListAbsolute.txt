@@ -57,3 +57,4 @@ C:\Users\Mat\Desktop\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.VR.x
 C:\Users\Mat\Desktop\Group-Project\Group Project\obj\Debug\Assembly-CSharp-firstpass.csprojResolveAssemblyReference.cache
 C:\Users\Mat\Desktop\Group-Project\Group Project\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Mat\Desktop\Group-Project\Group Project\obj\Debug\Assembly-CSharp-firstpass.pdb
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\LitJson.dll
