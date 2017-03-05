@@ -15,5 +15,11 @@ public class ToMainMenu : MonoBehaviour {
     {
         SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
     }
+
+	public void Level2()
+	{
+		//Add Night 2 Details here..
+		//SceneManager.LoadScene ("Night Two", LoadSceneMode.Single);
+	}
 	
 }
