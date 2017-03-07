@@ -38,7 +38,7 @@ public class PlayerCamera : MonoBehaviour {
         transform.Translate(translate, 0, translation);
 
 		//Attacking
-        if (Input.GetButton("Fire1"))
+		if (Input.GetButton("Fire1") || Input.GetAxisRaw("RightTrigger") != 0)
         {
             anim.SetBool("isAttacking", true);
         }
@@ -48,7 +48,7 @@ public class PlayerCamera : MonoBehaviour {
         }
 
 		//Different Attack
-		if (Input.GetButton("Fire2"))
+		if (Input.GetButton("Fire2") || Input.GetAxisRaw("LeftTrigger") != 0)
 		{
 			anim.SetBool("isAttacking1", true);
 		}
@@ -123,7 +123,7 @@ public class PlayerCamera : MonoBehaviour {
 		}
 
         //Allows the mouse to be shown in order to escape gameplay.
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetButton("Cancel"))
             Cursor.lockState = CursorLockMode.None;
 
     }
