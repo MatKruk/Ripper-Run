@@ -178,7 +178,7 @@ public class EnemyAi : MonoBehaviour
       PoliceAnim.Play("Walk");
 
      
-      NavMeshHit hit;
+      //NavMeshHit hit;
       print("in for loop");
      // if (NavMesh.FindClosestEdge(playerPos3SecFromNow, out hit, 1))
         // {
@@ -280,9 +280,9 @@ public class EnemyAi : MonoBehaviour
        {
            Vector3 sighting = previousSighting - transform.position;
    
-           Vector3 currentPos = player.transform.position;
+           playerPos = player.transform.position;
    
-           playerPos3SecFromNow = currentPos + (sighting - pastPos);
+           playerPos3SecFromNow = playerPos + pastPos;
 
             //previousSighting
 

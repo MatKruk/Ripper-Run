@@ -5,24 +5,33 @@ using UnityEngine.SceneManagement;
 public class Win : MonoBehaviour
 {
 	private DetectHit victim;
-	// Use this for initialization
-	void Start () {
-		victim = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit> ();
-	}
+    public BoxCollider col;
+    private GameObject player;
+    // Use this for initialization
+    void Start ()
+    {
+        col = GetComponent<BoxCollider>();
+        victim = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit> ();
+        player = GameObject.FindGameObjectWithTag("Player");
+
+    }
 
 	// Update is called once per frame
 	void Update () {
 
 	}
 
-	void OnTriggerEnter(Collider other)
+	void OnTriggerEnter(Collider col)
 	{
-		if (victim.isDead == true) 
-		{
-			GameObject.Find("Jack").SendMessage("finish");
-			SceneManager.LoadScene ("Win_Scene", LoadSceneMode.Single);
-			//print ("This works");
-		}
+        if (col.gameObject == player)
+        {
+            if (victim.isDead == true)
+            {
+                GameObject.Find("Jack").SendMessage("finish");
+                SceneManager.LoadScene("Win_Scene", LoadSceneMode.Single);
+                //print ("This works");
+            }
+        }
 	}
 }
 
