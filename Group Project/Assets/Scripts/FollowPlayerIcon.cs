@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowPlayerIcon : MonoBehaviour {
 
-	public Transform player;
+	public Transform character;
 	private GameObject PlayerRotation;
 
 	//CameraMouseLook cameraMouseLook;
@@ -26,8 +26,8 @@ public class FollowPlayerIcon : MonoBehaviour {
 		//Vector2 yRot;// = PlayerRotation.rotation.y * 360;
 		//float zRot = 0;
 		//yRot = cameraMouseLook.mouseLook;// = yRot;
-		this.transform.position = new Vector3 (player.position.x, this.transform.position.y, player.position.z);
-		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, player.eulerAngles.y, transform.eulerAngles.z);
+		this.transform.position = new Vector3 (character.position.x, this.transform.position.y, character.position.z);
+		transform.eulerAngles = new Vector3 (transform.eulerAngles.x, character.eulerAngles.y, transform.eulerAngles.z);
 		//this.transform.rotation = new Quaternion (xRot, player.rotation.y, zRot, 1);
 		//this.transform.rotation = new Quaternion (xRot, yRot, zRot, 1);
 

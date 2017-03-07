@@ -38,8 +38,8 @@ public class AddForceTrap : MonoBehaviour {
 		
 	void trapTrigger() {
 		if (playerInTrigger == true) {
-			if (Input.GetKeyDown (KeyCode.T)) {
-				Debug.Log ("E Key Pressed.");
+			if (Input.GetKeyDown (KeyCode.T) || Input.GetButton("joystickY")) {
+				Debug.Log ("T Key Pressed.");
 	
 				for (int i = 0; i < rBody.Length; i++) {
 					rBody [i].isKinematic = false;

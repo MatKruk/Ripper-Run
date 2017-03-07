@@ -9,6 +9,7 @@ public class SwitchCamera : MonoBehaviour {
 	[SerializeField] Camera backCamera = null;
 	private bool switchCam = false;
 	private bool backCam = false;
+	private int x = 0;
 
 	// Use this for initialization
 	void Start () 
@@ -21,16 +22,17 @@ public class SwitchCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{       
-		if(Input.GetKeyDown("e"))
+		if(Input.GetKeyDown("e") || Input.GetButton("3rdPerson"))
 		{
 			switchCam = !switchCam;
 			backCam = false;
 		}
-		if (Input.GetKeyDown("f"))
+		if (Input.GetKeyDown("f") || Input.GetButton ("BackCam"))
 		{
 			switchCam = false;
 			backCam = true;
 		}
+			
 		if(switchCam == true)
 		{
 			firstPerson.GetComponent<Camera>().enabled = false;

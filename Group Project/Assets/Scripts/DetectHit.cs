@@ -10,9 +10,9 @@ public class DetectHit : MonoBehaviour {
 	private Rigidbody rb;
 	AudioSource source;
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-		if (Input.GetButton("Fire1"))
+		if (Input.GetButton("Fire1") || Input.GetAxisRaw("RightTrigger") != 0)
 		{
 			//Destroy(gameObject);
 			anim.SetBool ("isDead", true);
@@ -30,7 +30,7 @@ public class DetectHit : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetButton("Fire2"))
+		if (Input.GetButton("Fire2") || Input.GetAxisRaw("LeftTrigger") != 0)
 		{
 			anim.SetBool ("isDeadToo", true);
             isDead = true;
