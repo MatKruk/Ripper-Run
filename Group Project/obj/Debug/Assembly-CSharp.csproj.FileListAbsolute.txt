@@ -112,5 +112,9 @@ H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Ass
 H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Assembly-CSharp.dll
 H:\UniFolder\Year 4\Group Project\Game\Group-Project\Group Project\obj\Debug\Assembly-CSharp.pdb
 >>>>>>> refs/remotes/origin/master
+<<<<<<< HEAD
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\LitJson.dll
+=======
 C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\LitJson.dll
 C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
+>>>>>>> refs/remotes/origin/master
