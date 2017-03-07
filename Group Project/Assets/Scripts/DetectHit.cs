@@ -10,7 +10,7 @@ public class DetectHit : MonoBehaviour {
 	private Rigidbody rb;
 	AudioSource source;
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
 		if (Input.GetButton("Fire1"))
 		{
