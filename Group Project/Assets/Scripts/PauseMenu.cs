@@ -9,6 +9,8 @@ public class PauseMenu : MonoBehaviour {
 
 	public Transform pause;
 	public Transform camera;
+	public Transform sound;
+	public Transform video;
 	public string loadLevel;
 
 	// Update is called once per frame
@@ -25,6 +27,8 @@ public class PauseMenu : MonoBehaviour {
 		if (pause.gameObject.activeInHierarchy == false) 
 		{
 			pause.gameObject.SetActive (true);
+			sound.gameObject.SetActive (false);
+			video.gameObject.SetActive (false);
 			Time.timeScale = 0;
 			camera.GetComponent<CameraMouseLook> ().enabled = false;
 		} 
@@ -42,4 +46,31 @@ public class PauseMenu : MonoBehaviour {
 		SceneManager.LoadScene (loadLevel);
 		//Application.Quit();
 	}
+		
+	public void Sounds(bool open)
+	{
+		if (open) 
+		{
+			sound.gameObject.SetActive (true);
+			pause.gameObject.SetActive (false);
+		} else 
+		{
+			pause.gameObject.SetActive (true);
+			sound.gameObject.SetActive (false);
+		}
+	}
+	
+	public void Video(bool open)
+	{
+		if (open) 
+		{
+			video.gameObject.SetActive (true);
+			pause.gameObject.SetActive (false);
+		} else 
+		{
+			video.gameObject.SetActive (false);
+			pause.gameObject.SetActive (true);
+		}
+	}
 }
+
