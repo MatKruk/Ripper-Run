@@ -23,6 +23,7 @@ public class Win : MonoBehaviour
 
 	void OnTriggerEnter(Collider col)
 	{
+<<<<<<< HEAD
         if (col.gameObject == player)
         {
             if (victim.isDead == true)
@@ -32,6 +33,16 @@ public class Win : MonoBehaviour
                 //print ("This works");
             }
         }
+=======
+		if (other.tag == "Player") {
+			if (victim.isDead == true) {
+				GameObject.Find ("Jack").SendMessage ("finish");
+				SceneManager.LoadScene ("Win_Scene", LoadSceneMode.Single);
+				//print ("This works");
+			}
+		} //else
+			//Debug.Log ("Not Player: " + other.name);
+>>>>>>> refs/remotes/origin/master
 	}
 }
 
