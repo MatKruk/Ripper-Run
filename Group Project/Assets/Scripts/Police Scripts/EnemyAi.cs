@@ -12,9 +12,12 @@ public class EnemyAi : MonoBehaviour
     private Animator PoliceAnim;
     private PlayerCamera playerHealth;
     private VictimDeadCheck victimDead;
+
+    //Sound Variables
     private AudioSource Source;
     public AudioClip stopShout;
-  
+    public float ShoutTime = 0;
+    public float waitShout = 5;
 
 
     public enum State
@@ -40,6 +43,8 @@ public class EnemyAi : MonoBehaviour
 
     // Variables for Chase
     public float chaseSpeed;
+    public bool isChasing;
+ 
 
     // Variables for Search
     private float posSeconds;
@@ -52,14 +57,15 @@ public class EnemyAi : MonoBehaviour
     public float investigateWait;
     private Vector3 playerPos;
     private Transform searchPoint;
-   // private int searchIndex = 0;
+    // private int searchIndex = 0;
 
-
-    // Variables for Sight
-    private SphereCollider col;
+    public SphereCollider col;
     public float fieldOfViewAngle = 110f;
     public bool canSeePlayer;
     public Vector3 previousSighting;
+
+
+
 
 
 
@@ -75,7 +81,6 @@ public class EnemyAi : MonoBehaviour
 
         PoliceAnim = GetComponent<Animator>();
         Source = GetComponent<AudioSource>();
-        
 
         nav.updatePosition = true;
         nav.updateRotation = true;
@@ -100,12 +105,10 @@ public class EnemyAi : MonoBehaviour
             pastPos = player.transform.position;
             posSeconds = 0f;
         }
+
+     
     }
    
-
-
-
-
     IEnumerator FSM()
     {
         while (alive)
@@ -177,23 +180,14 @@ public class EnemyAi : MonoBehaviour
       print("doing search");
       PoliceAnim.Play("Walk");
 
-     
-      //NavMeshHit hit;
-      print("in for loop");
-     // if (NavMesh.FindClosestEdge(playerPos3SecFromNow, out hit, 1))
-        // {
-            // print("Set Search way Points");
-            // searchPoint.position = hit.position;
-         //}
 
-            nav.destination = playerPos3SecFromNow;
+        //NavMeshHit hit;
+
+        nav.destination = playerPos3SecFromNow;
         
-
-
-
         if (investigateTimer >= investigateWait)
         {
-            print("doing Nothing");
+            print("Cant Find Jack going to patrol");
             state = EnemyAi.State.PATROL;
         }
 
@@ -205,12 +199,14 @@ public class EnemyAi : MonoBehaviour
         nav.speed = chaseSpeed;
         nav.SetDestination(previousSighting);
         PoliceAnim.Play("Run");
-
+        Audio();
+        isChasing = true;
         if (Vector3.Distance(transform.position, player.transform.position) <= 3)
             {
                 if (playerHealth.health == 0)
                 {
                     state = EnemyAi.State.ARREST;
+                    isChasing = false;
                 }
                 else
                 {                    
@@ -220,7 +216,7 @@ public class EnemyAi : MonoBehaviour
         else if (Vector3.Distance(transform.position, previousSighting) <= 3 && !canSeePlayer)
             {
                 state = EnemyAi.State.INVESTIGATE;
-                print("asda");
+                isChasing = false;
             }
 
     }
@@ -233,13 +229,43 @@ public class EnemyAi : MonoBehaviour
     }
 
 
+   IEnumerator Search()
+   {
+       while (canSeePlayer == false)
+       {
+           Vector3 sightingPlayer = previousSighting - transform.position;
+   
+           playerPos = player.transform.position;
+   
+           playerPos3SecFromNow = playerPos + pastPos;
+
+            //previousSighting
+
+
+              yield return new WaitForSeconds(1);
+       }
+   }
+
+    void Audio()
+    {
+       
+        ShoutTime += Time.deltaTime;
+
+        if(waitShout <= ShoutTime)
+        {
+            print("STOPPPPPPP!!!!!!!");
+            Source.Play();
+            ShoutTime = 0;
+        }
+        
+    }
 
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject == player)
         {
             canSeePlayer = false;
-                      
+
             Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
@@ -249,14 +275,11 @@ public class EnemyAi : MonoBehaviour
 
                 if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
                 {
-                    if (hit.collider.gameObject == player && victimDead.deadVic)
+                    if (hit.collider.gameObject == player && GameObject.FindGameObjectWithTag("Police").GetComponent<VictimDeadCheck>().deadVic)
                     {
-                        AudioClip clip = null;
-                        clip = stopShout;
                         canSeePlayer = true;
                         transform.LookAt(player.transform);
                         previousSighting = player.transform.position;
-                        Source.PlayOneShot(clip);
                         state = EnemyAi.State.CHASE;
                     }
                 }
@@ -271,26 +294,6 @@ public class EnemyAi : MonoBehaviour
         if (other.gameObject == player)
             canSeePlayer = false;
     }
-
-
-
-   IEnumerator Search()
-   {
-       while (canSeePlayer == false)
-       {
-           Vector3 sighting = previousSighting - transform.position;
-   
-           playerPos = player.transform.position;
-   
-           playerPos3SecFromNow = playerPos + pastPos;
-
-            //previousSighting
-
-
-              yield return new WaitForSeconds(1);
-       }
-   }
-
 
 
     // void FixedUpdate()
