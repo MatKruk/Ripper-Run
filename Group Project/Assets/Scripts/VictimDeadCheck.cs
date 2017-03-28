@@ -13,13 +13,14 @@ public class VictimDeadCheck : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        victimDead = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit>();
+        //victimDead = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit>();
         //deadVic = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+		victimDead = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit>();
         if (victimDead.isDead)
             {
                 deadVic = true;

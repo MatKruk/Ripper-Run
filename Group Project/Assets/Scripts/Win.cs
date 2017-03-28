@@ -7,12 +7,13 @@ public class Win : MonoBehaviour
 	private DetectHit victim;
 	// Use this for initialization
 	void Start () {
-		victim = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit> ();
+		//victim = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-
+		victim = GameObject.FindGameObjectWithTag("Victim").GetComponent<DetectHit> ();
+	
 	}
 
 	void OnTriggerEnter(Collider other)
