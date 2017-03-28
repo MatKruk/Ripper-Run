@@ -63,12 +63,7 @@ public class EnemyAi : MonoBehaviour
     public float fieldOfViewAngle = 110f;
     public bool canSeePlayer;
     public Vector3 previousSighting;
-
-
-
-
-
-
+    
     void Start()
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
