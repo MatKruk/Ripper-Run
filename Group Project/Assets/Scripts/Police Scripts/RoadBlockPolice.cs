@@ -12,12 +12,19 @@ public class RoadBlockPolice : MonoBehaviour {
     private PlayerCamera playerHealth;
     private VictimDeadCheck victimDead;
 
+    public float investigateTimer;
+    public float investigateWait;
 
     private bool canSeePlayer;
     public SphereCollider col;
     public float fieldOfViewAngle = 110f;
     Vector3 previousSighting;
 
+    private float posSeconds;
+    private float posSecondsTimer = 5f;
+    private Vector3 pastPos;
+    public Vector3 playerPos3SecFromNow;
+    private Vector3 playerPos;
 
     public float chaseSpeed;
 
@@ -39,7 +46,14 @@ public class RoadBlockPolice : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-     
+        StartCoroutine(Search());
+        posSeconds += Time.deltaTime;
+
+        if (posSeconds >= posSecondsTimer)
+        {
+            pastPos = player.transform.position;
+            posSeconds = 0f;
+        }
 
     }
 
@@ -47,7 +61,7 @@ public class RoadBlockPolice : MonoBehaviour {
     {
 
         nav.speed = chaseSpeed;
-        nav.SetDestination(GameObject.FindGameObjectWithTag("Police").GetComponent<EnemyAi>().previousSighting);
+        nav.SetDestination(previousSighting);
         PoliceAnim.Play("Run");
         transform.LookAt(playerMove);
        
@@ -63,7 +77,7 @@ public class RoadBlockPolice : MonoBehaviour {
            //     playerHealth.TakeDamage(1);
            // }
         }
-        else if (Vector3.Distance(transform.position, GameObject.FindGameObjectWithTag("Police").GetComponent<EnemyAi>().previousSighting) <= 3 && !GameObject.FindGameObjectWithTag("Police").GetComponent<EnemyAi>().canSeePlayer)
+        else if (Vector3.Distance(transform.position,previousSighting) <= 3 && !canSeePlayer)
         {
             Investigate();
         }
@@ -80,7 +94,35 @@ public class RoadBlockPolice : MonoBehaviour {
 
     void Investigate()
     {
+        investigateTimer += Time.deltaTime;
 
+        print("doing search");
+        PoliceAnim.Play("Walk");
+
+        nav.destination = playerPos3SecFromNow;
+
+        if (investigateTimer >= investigateWait)
+        {
+            print("Cant Find Jack going to patrol");
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Search()
+    {
+        while (canSeePlayer == false)
+        {
+            Vector3 sightingPlayer = previousSighting - transform.position;
+
+            playerPos = player.transform.position;
+
+            playerPos3SecFromNow = playerPos + pastPos;
+
+            //previousSighting
+
+
+            yield return new WaitForSeconds(1);
+        }
     }
 
     void OnTriggerStay(Collider other)
