@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PoliceManager : MonoBehaviour {
-    public GameObject police;
+
+    public GameObject Police;
     private PlayerCamera playerHealth;
-    public Transform[] spawnPoints;
+    
     public GameObject player;
+    public Transform spawnRotation;
    
     public float spawnRoadBlock; 
 
     public float RoadBlockTimer;
-    public float RoadBlockStart = 10f;
+    public float RoadBlockStart;
     // Use this for initialization
     void Start ()
     {
         playerHealth = player.GetComponent<PlayerCamera>();
-        
+        //Police = GameObject.FindGameObjectWithTag("RoadBlock");
+
+
     }
 	
 	// Update is called once per frame
@@ -26,7 +30,7 @@ public class PoliceManager : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("Police").GetComponent<EnemyAi>().isChasing)
         {
             RoadBlockTimer += Time.deltaTime;
-            if (RoadBlockTimer >= 10)
+            if (RoadBlockTimer >= RoadBlockStart)
             {
                 print("Spawn road block");
                 Spawn();
@@ -45,10 +49,12 @@ public class PoliceManager : MonoBehaviour {
         Vector3 playerDirection = player.transform.forward;
         Vector3 playerPos = player.transform.position;
         Vector3 spawnPos = playerPos + playerDirection * spawnRoadBlock;
+
+        Instantiate(Police, spawnPos, spawnRotation.rotation);
         
         //if(spawnRoadBlock >= 6)
       //  {
-            Instantiate(police, spawnPos, spawnPoints[0].rotation);
+            //Instantiate(police, spawnPos, spawnRotation.rotation);
        // }
         
      

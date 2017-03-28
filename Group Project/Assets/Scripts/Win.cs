@@ -21,28 +21,20 @@ public class Win : MonoBehaviour
 
 	}
 
-	void OnTriggerEnter(Collider col)
+	void OnTriggerEnter(Collider other)
 	{
-<<<<<<< HEAD
-        if (col.gameObject == player)
+
+    if (other.tag == "Player")
         {
-            if (victim.isDead == true)
+			if (victim.isDead == true)
             {
-                GameObject.Find("Jack").SendMessage("finish");
-                SceneManager.LoadScene("Win_Scene", LoadSceneMode.Single);
-                //print ("This works");
-            }
-        }
-=======
-		if (other.tag == "Player") {
-			if (victim.isDead == true) {
 				GameObject.Find ("Jack").SendMessage ("finish");
 				SceneManager.LoadScene ("Win_Scene", LoadSceneMode.Single);
 				//print ("This works");
 			}
 		} //else
 			//Debug.Log ("Not Player: " + other.name);
->>>>>>> refs/remotes/origin/master
+
 	}
 }
 
