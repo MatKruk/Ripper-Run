@@ -15,10 +15,11 @@ public class Switch : MonoBehaviour
 
 	}
 
-	// Update is called once per frame
-	void Update () 
+
+	void OnTriggerEnter (Collider other) 
 	{
-		if (Input.GetKeyDown ("r")/*trigger box*/) 
+		//If the player presses r while in the trigger box they will control the horse
+		if (other.gameObject.CompareTag("Trigger") && Input.GetKeyDown ("r")) 
 		{
 			//Find the Horse object that is found under Carriage
 			GameObject disable = GameObject.Find("Carriage/Horse");
@@ -27,7 +28,7 @@ public class Switch : MonoBehaviour
 
 			//Disable player (Jack's) controls
 			GetComponent<PlayerCamera> ().enabled = false;
-			//Disable the MoveTo Script that is attached to the Horse object
+			//Disable the MoveTo Script that is attached to the Horse object and enable the horse controls
 			disable.GetComponent<MoveTo>().enabled = false;
 			disable.GetComponent<HorseControl> ().enabled = true;
 
