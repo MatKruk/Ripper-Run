@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Switch : MonoBehaviour 
 {
-
+	public int num = 1;
 
 
 	// Use this for initialization
@@ -17,32 +17,61 @@ public class Switch : MonoBehaviour
 
 	void OnTriggerEnter (Collider other) 
 	{
-		
+
+		//Find the Horse object that is found under Carriage
+		GameObject horse = GameObject.Find ("Carriage/Horse");
+		//GameObject horsePos = GameObject.Find ("Carriage/Horse").transform.position;
+		//Find the HCamera Object that is found under Horse
+		GameObject Hcamera = GameObject.Find ("Carriage/Horse/HCamera");
+		//Find the MainCamera that is on Jack
+		GameObject Pcamera = GameObject.Find ("Main Camera"); 
+
+		//TO DO: make it switch back on same button press
+
 		//If the player presses r while in the trigger box they will control the horse
-		if (other.gameObject.CompareTag("Trigger") && Input.GetKeyDown ("r")) 
-		{
+		if (other.gameObject.CompareTag ("Trigger") && Input.GetKeyDown ("r") && num == 1) {
 
-			//make it switch back on same button press
-			//move player to location i.e. GameObject Jack
 
-			//Find the Horse object that is found under Carriage
-			GameObject disable = GameObject.Find("Carriage/Horse");
-			//Find the HCamera Object that is found under Horse
-			GameObject Hcamera = GameObject.Find("Carriage/Horse/HCamera");
-			//Find the MainCamera that is on Jack
-			GameObject Pcamera = GameObject.Find("Main Camera"); 
-
-			Pcamera.GetComponent<Camera>().enabled = false; 
+			//set Camera to horse
+			Pcamera.GetComponent<Camera> ().enabled = false; 
 			Hcamera.GetComponent<Camera> ().enabled = true;
 
 
 			//Disable player (Jack's) control script
 			GetComponent<PlayerCamera> ().enabled = false;
 			//Disable the MoveTo Script that is attached to the Horse object and enable the horse controls
-			disable.GetComponent<MoveTo>().enabled = false;
-			disable.GetComponent<HorseControl> ().enabled = true;
+			horse.GetComponent<MoveTo> ().enabled = false;
+			horse.GetComponent<HorseControl> ().enabled = true;
 			//disable the NavMeshAgent as it interferes with the player controlled horse
-			disable.GetComponent <UnityEngine.AI.NavMeshAgent>().enabled = false;
+			horse.GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = false;
+
+			//makes Jack a child of Horse (this is a weird comment)
+			transform.parent = GameObject.Find ("Carriage/Horse").transform;
+
+
+			num = 2;
+
+		} 
+		else if (Input.GetKeyDown ("r") && num == 2) 
+		{
+
+			//set camera back to Jack
+			Pcamera.GetComponent<Camera> ().enabled = true; 
+			Hcamera.GetComponent<Camera> ().enabled = false;		
+
+
+			//Enable player (Jack's) control script
+			GetComponent<PlayerCamera> ().enabled = true;
+			//enable the MoveTo Script that is attached to the Horse object and disable the horse controls
+			horse.GetComponent<MoveTo> ().enabled = true;
+			horse.GetComponent<HorseControl> ().enabled = false;
+			//enable the NavMeshAgent as it interferes with the player controlled horse
+			horse.GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = true;
+
+			//makes Jack have no Parent
+			transform.parent = null;
+
+
 		}
 
 			
