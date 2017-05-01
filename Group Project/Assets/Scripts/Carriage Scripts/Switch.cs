@@ -52,6 +52,7 @@ public class Switch : MonoBehaviour
 			num = 2;
 
 		} 
+		//you still have to be in the triggerbox to get off because of OnTriggerEnter
 		else if (Input.GetKeyDown ("r") && num == 2) 
 		{
 
@@ -70,6 +71,8 @@ public class Switch : MonoBehaviour
 
 			//makes Jack have no Parent
 			transform.parent = null;
+
+			num = 1;
 
 
 		}
