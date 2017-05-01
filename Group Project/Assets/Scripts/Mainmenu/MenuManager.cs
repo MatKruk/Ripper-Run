@@ -20,13 +20,16 @@ public class MenuManager : MonoBehaviour {
 		currentMenu.IsOpen = true;
 	}
 
-
-
-
     public void StartGame()
     {
         SceneManager.LoadScene("Map_AI", LoadSceneMode.Single);
     }
+
+
+	public void Exit()
+	{
+		Application.Quit();
+	}
 
 
 }
