@@ -39,7 +39,12 @@ public class EnemyAi : MonoBehaviour
 
 
     // Variables for Chase
+<<<<<<< HEAD
     public static float chaseSpeed;
+=======
+    public float chaseSpeed;
+    public bool isChasing;
+>>>>>>> refs/remotes/origin/master
 
     // Variables for Search
     private float posSeconds;
@@ -60,6 +65,10 @@ public class EnemyAi : MonoBehaviour
     public float fieldOfViewAngle = 110f;
     public bool canSeePlayer;
     public Vector3 previousSighting;
+
+    //Variables for Shout
+    private float shoutTimer;
+    private float shoutStart = 10f;
 
 
 
@@ -99,6 +108,11 @@ public class EnemyAi : MonoBehaviour
         {
             pastPos = player.transform.position;
             posSeconds = 0f;
+        }
+
+        if(canSeePlayer)
+        {
+            Sound();
         }
     }
    
@@ -173,27 +187,14 @@ public class EnemyAi : MonoBehaviour
 
       print("doing search");
       PoliceAnim.Play("Walk");
-
-     
-      NavMeshHit hit;
-      print("in for loop");
-     // if (NavMesh.FindClosestEdge(playerPos3SecFromNow, out hit, 1))
-        // {
-            // print("Set Search way Points");
-            // searchPoint.position = hit.position;
-         //}
-
-            nav.destination = playerPos3SecFromNow;
-        
+      nav.destination = playerPos3SecFromNow;
 
 
-
-        if (investigateTimer >= investigateWait)
-        {
-            print("doing Nothing");
-            state = EnemyAi.State.PATROL;
-        }
-
+      if (investigateTimer >= investigateWait)
+       {
+          print("doing Nothing");
+          state = EnemyAi.State.PATROL;
+       }
     }
 
     void Chase()
@@ -202,22 +203,20 @@ public class EnemyAi : MonoBehaviour
         nav.speed = chaseSpeed;
         nav.SetDestination(previousSighting);
         PoliceAnim.Play("Run");
-
+        isChasing = true;
+        
         if (Vector3.Distance(transform.position, player.transform.position) <= 3)
             {
-                if (playerHealth.health == 0)
-                {
-                    state = EnemyAi.State.ARREST;
-                }
-                else
-                {                    
-                    playerHealth.TakeDamage(1);
-                }
+
+                state = EnemyAi.State.ARREST;
+                isChasing = false;
             }
         else if (Vector3.Distance(transform.position, previousSighting) <= 3 && !canSeePlayer)
             {
                 state = EnemyAi.State.INVESTIGATE;
                 print("asda");
+                isChasing = false;
+
             }
 
     }
@@ -229,7 +228,35 @@ public class EnemyAi : MonoBehaviour
 
     }
 
+    void Sound()
+    {
+        AudioClip clip = null;
+        clip = stopShout;
+        
+        shoutTimer += Time.deltaTime;
+        if(shoutTimer >= shoutStart )
+        {
+            Source.PlayOneShot(clip);
+       }
+        
+    }
 
+    IEnumerator Search()
+    {
+        while (canSeePlayer)
+        {
+            Vector3 sighting = previousSighting - transform.position;
+
+            Vector3 currentPos = player.transform.position;
+
+            playerPos3SecFromNow = currentPos + (sighting - pastPos);
+
+            //previousSighting
+
+
+            yield return new WaitForSeconds(1);
+        }
+    }
 
     void OnTriggerStay(Collider other)
     {
@@ -248,12 +275,11 @@ public class EnemyAi : MonoBehaviour
                 {
                     if (hit.collider.gameObject == player && victimDead.deadVic)
                     {
-                        AudioClip clip = null;
-                        clip = stopShout;
+                        
+                        
                         canSeePlayer = true;
                         transform.LookAt(player.transform);
                         previousSighting = player.transform.position;
-                        Source.PlayOneShot(clip);
                         state = EnemyAi.State.CHASE;
                     }
                 }
@@ -271,22 +297,7 @@ public class EnemyAi : MonoBehaviour
 
 
 
-   IEnumerator Search()
-   {
-       while (canSeePlayer == false)
-       {
-           Vector3 sighting = previousSighting - transform.position;
-   
-           Vector3 currentPos = player.transform.position;
-   
-           playerPos3SecFromNow = currentPos + (sighting - pastPos);
 
-            //previousSighting
-
-
-              yield return new WaitForSeconds(1);
-       }
-   }
 
 
 

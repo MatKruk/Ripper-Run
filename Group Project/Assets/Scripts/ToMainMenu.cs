@@ -16,10 +16,15 @@ public class ToMainMenu : MonoBehaviour {
         SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
     }
 
-	public void Level2()
+	public void NextLevel()
+	{
+		SceneManager.LoadScene("Level2", LoadSceneMode.Single);
+	}
+
+	public void Retry()
 	{
 		//Add Night 2 Details here..
-		//SceneManager.LoadScene ("Night Two", LoadSceneMode.Single);
+		SceneManager.LoadScene ("Map_AI", LoadSceneMode.Single);
 	}
 	
 }
