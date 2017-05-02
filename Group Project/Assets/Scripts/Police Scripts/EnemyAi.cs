@@ -40,7 +40,6 @@ public class EnemyAi : MonoBehaviour
 
     // Variables for Chase
     public static float chaseSpeed;
-	private float chaseSpeedWhenSlowed = 1;
 
     // Variables for Search
     private float posSeconds;
@@ -101,14 +100,6 @@ public class EnemyAi : MonoBehaviour
             pastPos = player.transform.position;
             posSeconds = 0f;
         }
-
-		// Reduce police movement speed if they are running through a triggered barrel trap.
-		//if (AddForceTrap.policeInTrigger == true) {
-		//	if (AddForceTrap.isTriggered == true) {
-		//		chaseSpeed = chaseSpeedWhenSlowed;
-		//	}
-		//} else
-		//	chaseSpeed = chaseSpeed;
     }
    
 
