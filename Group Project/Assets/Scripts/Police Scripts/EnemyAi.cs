@@ -41,6 +41,7 @@ public class EnemyAi : MonoBehaviour
     // Variables for Chase
     public float chaseSpeed;
     public bool isChasing;
+    public bool deadVictimCheck;
 
     // Variables for Search
     private float posSeconds;
@@ -273,12 +274,11 @@ public class EnemyAi : MonoBehaviour
                 if (Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
                 {
                     if (hit.collider.gameObject == player && victimDead.deadVic)
-                    {
-                        
-                        
+                    {                                               
                         canSeePlayer = true;
                         transform.LookAt(player.transform);
                         previousSighting = player.transform.position;
+                        deadVictimCheck = true;
                         state = EnemyAi.State.CHASE;
                     }
                 }
