@@ -42,6 +42,7 @@ public class AddForceTrap : MonoBehaviour {
 
 
 	}
+
 	void Update()
 	{
 		trapTrigger();
@@ -72,10 +73,9 @@ public class AddForceTrap : MonoBehaviour {
 			}
 		}
 	}
+		
 
-
-
-	// OLD ------------------------------------------------------------------------------
+	// OLD CODE - FIRST ATTEMPTS AT THIS SCRIPT --------------------------------------------------
 
 	//void Update()
 	//{
