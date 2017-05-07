@@ -22,7 +22,7 @@ public class MenuManager : MonoBehaviour {
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Map_AI", LoadSceneMode.Single);
+        SceneManager.LoadScene("Cinematic_Whitechapel", LoadSceneMode.Single);
     }
 
 

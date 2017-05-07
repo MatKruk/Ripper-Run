@@ -91,3 +91,7 @@ C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CS
 C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp-firstpass.dll
 C:\Users\Beth\Documents\GitHub\Group-Project\Group Project\obj\Debug\Assembly-CSharp-firstpass.pdb
 >>>>>>> refs/remotes/origin/master
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\nunit.framework.dll
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.TestRunner.dll
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\UnityEngine.TestRunner.xml
+E:\Git\Group-Project\Group Project\Temp\bin\Debug\nunit.framework.xml

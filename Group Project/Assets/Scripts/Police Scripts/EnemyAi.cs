@@ -14,7 +14,7 @@ public class EnemyAi : MonoBehaviour
     private VictimDeadCheck victimDead;
     private AudioSource Source;
     public AudioClip stopShout;
-	 
+
 
 
     public enum State
@@ -39,12 +39,12 @@ public class EnemyAi : MonoBehaviour
 
 
     // Variables for Chase
-<<<<<<< HEAD
-    public static float chaseSpeed;
-=======
+
+    //public static float chaseSpeed;
+
     public float chaseSpeed;
     public bool isChasing;
->>>>>>> refs/remotes/origin/master
+
 
     // Variables for Search
     private float posSeconds;
@@ -71,7 +71,6 @@ public class EnemyAi : MonoBehaviour
     private float shoutStart = 10f;
 
 
-
     void Start()
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -81,13 +80,11 @@ public class EnemyAi : MonoBehaviour
         playerHealth = player.GetComponent<PlayerCamera>();
 
         victimDead = GameObject.FindGameObjectWithTag("Police").GetComponent<VictimDeadCheck>(); 
-
         PoliceAnim = GetComponent<Animator>();
         Source = GetComponent<AudioSource>();
-        
 
         nav.updatePosition = true;
-        nav.updateRotation = true;
+        //nav.updateRotation = true;
 
         state = EnemyAi.State.PATROL;
 
@@ -114,6 +111,7 @@ public class EnemyAi : MonoBehaviour
         {
             Sound();
         }
+
     }
    
 
@@ -258,13 +256,13 @@ public class EnemyAi : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
+	void OnTriggerStay(Collider other)
     {
-        if (other.gameObject == player)
+		if (other.gameObject == player)
         {
             canSeePlayer = false;
                       
-            Vector3 direction = other.transform.position - transform.position;
+			Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
             if (angle < fieldOfViewAngle * 0.5f)
