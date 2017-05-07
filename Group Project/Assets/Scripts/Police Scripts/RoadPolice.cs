@@ -46,7 +46,6 @@ public class RoadPolice : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        StartCoroutine(Search());
         posSeconds += Time.deltaTime;
 
         if (posSeconds >= posSecondsTimer)
@@ -86,46 +85,50 @@ public class RoadPolice : MonoBehaviour {
 
     }
 
-    void Investigate()
-    {
-        investigateTimer += Time.deltaTime;
-
-        print("doing search");
-        PoliceAnim.Play("Walk");
+	void Investigate()
+	{
+		investigateTimer += Time.deltaTime;
 
 
+		PoliceAnim.Play("Walk");
 
-        //NavMeshHit hit;
+		Vector3 sightingPlayer = previousSighting - transform.position;
 
-        nav.destination = playerPos3SecFromNow;
+		playerPos = player.transform.position;
 
+		playerPos3SecFromNow = player.transform.forward + sightingPlayer;
 
-
-        if (investigateTimer >= investigateWait)
-        {
-            print("Cant Find Jack going to patrol");
-            Destroy(gameObject);
-        }
-    }
-
-    IEnumerator Search()
-    {
-        while (canSeePlayer)
-        {
-            Vector3 sightingPlayer = previousSighting - transform.position;
-
-            playerPos = player.transform.position;
-
-            playerPos3SecFromNow = playerPos + pastPos;
-
-            //previousSighting
+		nav.destination = playerPos3SecFromNow;
 
 
-            yield return new WaitForSeconds(1);
 
-        }
-    }
+		if (investigateTimer >= investigateWait)
+		{
 
+			Destroy(gameObject);
+		}
+	}
+    //void Investigate()
+    //{
+    //    investigateTimer += Time.deltaTime;
+	//
+    //    print("doing search");
+    //    PoliceAnim.Play("Walk");
+	//
+	//
+	//
+    //    //NavMeshHit hit;
+	//
+    //    nav.destination = playerPos3SecFromNow;
+	//
+	//
+	//
+    //    if (investigateTimer >= investigateWait)
+    //    {
+    //        print("Cant Find Jack going to patrol");
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     void OnTriggerStay(Collider other)
     {

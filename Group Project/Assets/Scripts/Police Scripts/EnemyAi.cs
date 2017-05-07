@@ -14,7 +14,7 @@ public class EnemyAi : MonoBehaviour
     private VictimDeadCheck victimDead;
     private AudioSource Source;
     public AudioClip stopShout;
-  
+
 
 
     public enum State
@@ -39,9 +39,13 @@ public class EnemyAi : MonoBehaviour
 
 
     // Variables for Chase
+
+    //public static float chaseSpeed;
+
     public float chaseSpeed;
     public bool isChasing;
     public bool deadVictimCheck;
+
 
     // Variables for Search
     private float posSeconds;
@@ -68,7 +72,6 @@ public class EnemyAi : MonoBehaviour
     private float shoutStart = 10f;
 
 
-
     void Start()
     {
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
@@ -78,27 +81,24 @@ public class EnemyAi : MonoBehaviour
         playerHealth = player.GetComponent<PlayerCamera>();
 
         victimDead = GameObject.FindGameObjectWithTag("Police").GetComponent<VictimDeadCheck>(); 
-
         PoliceAnim = GetComponent<Animator>();
         Source = GetComponent<AudioSource>();
-        
 
         nav.updatePosition = true;
-        nav.updateRotation = true;
+        //nav.updateRotation = true;
 
         state = EnemyAi.State.PATROL;
 
         alive = true;
 
         StartCoroutine("FSM");
-        // StartCoroutine(Search());
-         PoliceAnim.Play("idle");
+
+        PoliceAnim.Play("idle");
         
     }
 
     void Update()
     {
-        StartCoroutine(Search());
         posSeconds += Time.deltaTime;
 
         if (posSeconds >= posSecondsTimer)
@@ -111,11 +111,9 @@ public class EnemyAi : MonoBehaviour
         {
             Sound();
         }
+
     }
    
-
-
-
 
     IEnumerator FSM()
     {
@@ -182,19 +180,24 @@ public class EnemyAi : MonoBehaviour
 
     void Investigate()
     {
-       
-      investigateTimer += Time.deltaTime;
+		investigateTimer += Time.deltaTime;
 
-      print("doing search");
-      PoliceAnim.Play("Walk");
-      nav.destination = playerPos3SecFromNow;
+		print ("doing search");
+		PoliceAnim.Play ("Walk");
 
+		Vector3 sightingPlayer = previousSighting - transform.position;
 
-      if (investigateTimer >= investigateWait)
-       {
-          print("doing Nothing");
-          state = EnemyAi.State.PATROL;
-       }
+		playerPos = player.transform.position;
+
+		playerPos3SecFromNow = player.transform.forward + pastPos;
+
+		nav.destination = playerPos3SecFromNow;
+
+		if (investigateTimer >= investigateWait)
+		{
+			print ("doing nothing");
+			state = EnemyAi.State.PATROL;
+		}
     }
 
     void Chase()
@@ -240,31 +243,14 @@ public class EnemyAi : MonoBehaviour
        }
         
     }
-
-    IEnumerator Search()
+		
+	void OnTriggerStay(Collider other)
     {
-        while (canSeePlayer)
-        {
-            Vector3 sighting = previousSighting - transform.position;
-
-            Vector3 currentPos = player.transform.position;
-
-            playerPos3SecFromNow = currentPos + (sighting - pastPos);
-
-            //previousSighting
-
-
-            yield return new WaitForSeconds(1);
-        }
-    }
-
-    void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject == player)
+		if (other.gameObject == player)
         {
             canSeePlayer = false;
                       
-            Vector3 direction = other.transform.position - transform.position;
+			Vector3 direction = other.transform.position - transform.position;
             float angle = Vector3.Angle(direction, transform.forward);
 
             if (angle < fieldOfViewAngle * 0.5f)
