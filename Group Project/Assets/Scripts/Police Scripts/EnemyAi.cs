@@ -92,14 +92,13 @@ public class EnemyAi : MonoBehaviour
         alive = true;
 
         StartCoroutine("FSM");
-        // StartCoroutine(Search());
-         PoliceAnim.Play("idle");
+
+        PoliceAnim.Play("idle");
         
     }
 
     void Update()
     {
-        StartCoroutine(Search());
         posSeconds += Time.deltaTime;
 
         if (posSeconds >= posSecondsTimer)
@@ -181,19 +180,24 @@ public class EnemyAi : MonoBehaviour
 
     void Investigate()
     {
-       
-      investigateTimer += Time.deltaTime;
+		investigateTimer += Time.deltaTime;
 
-      print("doing search");
-      PoliceAnim.Play("Walk");
-      nav.destination = playerPos3SecFromNow;
+		print ("doing search");
+		PoliceAnim.Play ("Walk");
 
+		Vector3 sightingPlayer = previousSighting - transform.position;
 
-      if (investigateTimer >= investigateWait)
-       {
-          print("doing Nothing");
-          state = EnemyAi.State.PATROL;
-       }
+		playerPos = player.transform.position;
+
+		playerPos3SecFromNow = player.transform.forward + pastPos;
+
+		nav.destination = playerPos3SecFromNow;
+
+		if (investigateTimer >= investigateWait)
+		{
+			print ("doing nothing");
+			state = EnemyAi.State.PATROL;
+		}
     }
 
     void Chase()
@@ -239,24 +243,7 @@ public class EnemyAi : MonoBehaviour
        }
         
     }
-
-    IEnumerator Search()
-    {
-        while (canSeePlayer)
-        {
-            Vector3 sighting = previousSighting - transform.position;
-
-            Vector3 currentPos = player.transform.position;
-
-            playerPos3SecFromNow = currentPos + (sighting - pastPos);
-
-            //previousSighting
-
-
-            yield return new WaitForSeconds(1);
-        }
-    }
-
+		
 	void OnTriggerStay(Collider other)
     {
 		if (other.gameObject == player)
