@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 471}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -88,10 +88,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 911, y: 421}
-  m_MaxSize: {x: 22006, y: 10021}
+  m_MinSize: {x: 915, y: 421}
+  m_MaxSize: {x: 22010, y: 10021}
   vertical: 0
-  controlID: 71
+  controlID: 21
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 421}
   m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 47
+  controlID: 22
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -154,8 +154,8 @@ MonoBehaviour:
     y: 0
     width: 204
     height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -315,10 +315,10 @@ MonoBehaviour:
     width: 200
     height: 926
   m_TreeViewState:
-    scrollPos: {x: 0, y: 120}
-    m_SelectedIDs: c2400000
-    m_LastClickedID: 0
-    m_ExpandedIDs: b2f7ffffccf8ffff00000000fa7c00008e940000f6b40000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 52af0100
+    m_LastClickedID: 110418
+    m_ExpandedIDs: bce6e1ff4856fdffccf8ffff0000000000b50100ecbc0100
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -337,7 +337,7 @@ MonoBehaviour:
       m_ClientGUIView: {fileID: 7}
     m_SearchString: 
   m_ExpandedScenes:
-  - Map_AI
+  - Cinematic_Whitechapel
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -401,7 +401,7 @@ MonoBehaviour:
     width: 298
     height: 926
   m_SearchFilter:
-    m_NameFilter: woma
+    m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -416,14 +416,13 @@ MonoBehaviour:
   m_StartGridSize: 64
   m_LastFolders: []
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\Ben\Documents\Unity Group Project\Group-Project\Group
-    Project
+  m_LastProjectPath: E:\Git\Group-Project\Group Project
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000483500005c3500005e35000060350000623500006c35000078350000f4360000d43700007a3a0000883b0000ba3d0000f03d000078410000c0410000dc420000d2430000024700003247000096480000984800009a4800009c4800009e480000a0480000a2480000a4480000a6480000a8480000aa480000ac480000ae480000
+    m_ExpandedIDs: 00000000483500005c3500005e35000060350000623500006c35000078350000f4360000d43700007a3a0000883b0000ba3d0000f03d000078410000c0410000dc420000d24300000247000032470000227000002470000026700000287000002a7000002c7000002e70000030700000327000003470000036700000387000003a700000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -451,7 +450,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000483500005c3500005e35000060350000623500006c35000078350000f4360000d43700007a3a0000883b0000ba3d0000f03d000078410000c0410000dc420000d2430000024700003247000096480000984800009a4800009c4800009e480000a0480000a2480000a4480000a6480000a8480000aa480000ac480000ae480000
+    m_ExpandedIDs: 00000000483500005c3500005e35000060350000623500006c35000078350000f4360000d43700007a3a0000883b0000ba3d0000f03d000078410000c0410000dc420000d24300000247000032470000227000002470000026700000287000002a7000002c7000002e70000030700000327000003470000036700000387000003a700000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -641,7 +640,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.34660196, y: 0.20635387, z: -0.07845244, w: -0.91166353}
     speed: 2
-    m_Value: {x: -0.34660196, y: 0.20635387, z: -0.07845244, w: -0.91166353}
+    m_Value: {x: -0.34660193, y: 0.20635387, z: -0.07845243, w: -0.91166353}
   m_Size:
     m_Target: 5.099263
     speed: 2
