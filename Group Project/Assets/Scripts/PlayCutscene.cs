@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
-using UnityEditor.SceneManagement;
 
 public class PlayCutscene : MonoBehaviour {
 
@@ -21,7 +20,7 @@ public class PlayCutscene : MonoBehaviour {
 		Application.runInBackground = true;
 		// Coroutine to play cutscene
 		StartCoroutine(playVideo());
-		// Corouting to load the level after a timer
+		// Coroutine to load the level after a timer
 		StartCoroutine (WaitAndLoad (9.5f, "Map_AI"));
 	}
 	
@@ -58,14 +57,15 @@ public class PlayCutscene : MonoBehaviour {
 	// Coroutine to load the scene after video is done
 	private IEnumerator WaitAndLoad(float value, string scene){
 		yield return new WaitForSeconds (value);
-		EditorSceneManager.LoadScene (scene);	
+		// When building, unity didn't like using a namespace for SceneManagement which is why v this v is so long.
+		UnityEngine.SceneManagement.SceneManager.LoadScene (scene, UnityEngine.SceneManagement.LoadSceneMode.Single);	
 	}
 	
 	void Update () {
 		// Check for input that interrupts the cutscene and loads the game.
 		if (Input.GetKeyDown (KeyCode.Space) || Input.GetButton ("joystickX") && videoPlayer.isPlaying) {
 			videoPlayer.Stop ();
-			EditorSceneManager.LoadScene ("Map_AI");
+			UnityEngine.SceneManagement.SceneManager.LoadScene ("Map_AI", UnityEngine.SceneManagement.LoadSceneMode.Single);
 		}
 	}
 	
